@@ -27,19 +27,20 @@ class _MyAppState extends State<MyApp> {
     _speech = stt.SpeechToText();
   }
 
-  Future<void> searchData(String query) async {
-    final response = await http.get(Uri.parse("$apiUrl?query=$query"));
+Future<void> searchData(String query1, String query2) async {
+  final response = await http.get(Uri.parse("$apiUrl?query1=$query1&query2=$query2"));
 
-    if (response.statusCode == 200) {
-      var data = json.decode(response.body);
-      setState(() {
-        resultsSheet1 = data["sheet1_results"];
-        resultsSheet2 = data["sheet2_results"];
-      });
-    } else {
-      throw Exception("Gagal mengambil data");
-    }
+  if (response.statusCode == 200) {
+    var data = json.decode(response.body);
+    setState(() {
+      resultsSheet1 = data["sheet1_results"] ?? [];
+      resultsSheet2 = data["sheet2_results"] ?? [];
+    });
+  } else {
+    throw Exception("Gagal mengambil data");
   }
+}
+
 
   void _listen() async {
     if (!_isListening) {
