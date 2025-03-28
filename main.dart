@@ -16,7 +16,7 @@ class _MyAppState extends State<MyApp> {
   stt.SpeechToText _speech;
   bool _isListening = false;
   String _text = "Tekan tombol dan mulai berbicara";
-  String apiUrl = "https://your-render-api-url.com/search"; // Ganti dengan URL dari Render.com
+  String apiUrl = "https://new-versi.onrender.com//search"; // Ganti dengan URL dari Render.com
 
   List<dynamic> resultsSheet1 = [];
   List<dynamic> resultsSheet2 = [];
